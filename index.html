@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8" />
+	<script src='js/pdfmake.min.js'></script>
+	<script src='js/vfs_fonts.js'></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.js"></script>
+	<title>PDF Report Test</title>
+	<script>
+		function createPdf() {
+			if (pdfMake.vfs === undefined) {
+				pdfMake.vfs = window.vfs
+			}
+
+			if (pdfMake.fonts === undefined) {
+				pdfMake.fonts = {
+					GenShinGothic: {
+						normal: 'GenShinGothic-Normal-Sub.ttf',
+						bold: 'GenShinGothic-Normal-Sub.ttf',
+						italics: 'GenShinGothic-Normal-Sub.ttf',
+						bolditalics: 'GenShinGothic-Normal-Sub.ttf',
+					},
+				}
+			}
+			eval($('#pdfsrc').val())
+			var pdfDoc = pdfMake.createPdf(dd)
+			pdfDoc.getDataUrl((url) => { $("#pdfviewer").attr('src', url) }, pdfDoc)
+		}
+	</script>
+	<style>
+		html, body {
+			margin: 0px;
+			height: 100%;
+		}
+		#content {
+			height: 100%;
+			width: 100%;
+		}
+		#pdfsrc {
+			height: 100%;
+			width: 100%;
+		}
+		#pdfviewer {
+			height: 100%;
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<table id="content">
+		<tr style="height: 25px;">
+			<td>
+				<button onclick="createPdf()">导出PDF</button>
+			</td>
+			<td>
+				<a href="http://pdfmake.org/playground.html" target="blank">PDFMaker参考</a>
+			</td>
+		</tr>
+		<tr>
+			<td style="width: 20%">
+				<textarea id="pdfsrc" cols="30" rows="10">var dd = {
+	content: [
+		{
+			stack: [
+				'日本語This header has both top and bottom margins defined',
+				{text: 'This is a subheader', style: 'subheader'},
+			],
+			style: 'header'
+		}
+	],
+	defaultStyle: {
+		font: 'GenShinGothic',
+	},
+}</textarea>
+			</td>
+			<td style="width: 80%">
+				<iframe id="pdfviewer" src="" frameborder="0"></iframe>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
