@@ -83,18 +83,22 @@
 		}
 	</script>
 	<style>
-		html, body {
+		html,
+		body {
 			margin: 0px;
 			height: 100%;
 		}
+
 		#content {
 			height: 100%;
 			width: 100%;
 		}
+
 		#pdfsrc {
 			height: 100%;
 			width: 100%;
 		}
+
 		#pdfviewer {
 			height: 100%;
 			width: 100%;
@@ -114,19 +118,47 @@
 		<tr>
 			<td style="width: 20%">
 				<textarea id="pdfsrc" cols="30" rows="10">var dd = {
-	content: [
-		{
-			stack: [
-				'日本語This header has both top and bottom margins defined',
-				{text: 'This is a subheader', style: 'subheader'},
-			],
-			style: 'header'
-		}
-	],
-	defaultStyle: {
-		font: 'GenShinGothic',
-	},
-}</textarea>
+				content: [
+					{
+						stack: [
+							{
+								text:"日本語のテスト This is Japanese test!",
+								font: "ipam"
+							},
+							{
+								text:"日本語のテスト This is Japanese test!",
+								font: "ipamp"
+							},
+							{
+								text:"日本語のテスト This is Japanese test!",
+								font: "ipag"
+							},
+							{
+								text:"日本語のテスト This is Japanese test!",
+								font: "ipagp"
+							},
+							{
+								text:"日本語のテスト This is Japanese test!",
+								font: "GenShinGothic"
+							},
+							{
+								text:"日本語のテスト This is Japanese test!",
+								font: "GenShinGothicP",
+								bold:true
+							},
+							{
+								text:"日本語のテスト This is Japanese test!",
+								font: "GenShinGothicMono",
+								bold:true
+							},
+						],
+						style: 'header'
+					}
+				],
+				defaultStyle: {
+					font: 'GenShinGothic',
+				},
+			}</textarea>
 			</td>
 			<td style="width: 80%">
 				<iframe id="pdfviewer" src="" frameborder="0"></iframe>
